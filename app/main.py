@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 from app.config import load_config
 from app.logger import logger
@@ -42,14 +42,23 @@ async def add_user(user: User):
         return {"status": "Ok"}
     except:
         return {"massage": "user not add"} 
-    
+      
 feedback_data = []
 @app.post('/add_feedback')
-async def add_feedback(feedback: FeedBack):
+async def add_feedback(feedback: FeedBack, is_premium: bool=False):
     feedback_data.append(feedback)
-    return {"status": f'Thx {feedback.name}'}
+    
+    if is_premium:
+        return {
+            "message": f"Спасибо, {feedback.name}! Ваш отзыв сохранён. Ваш отзыв будет рассмотрен в приоритетном порядке."
+        }
+
+    return {
+        "message": f"Спасибо, {feedback.name}! Ваш отзыв сохранён."
+    }
 
 
 @app.get('/feedback')
 async def get_feedback():
     return feedback_data
+
