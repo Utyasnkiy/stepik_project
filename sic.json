@@ -1,0 +1,103 @@
+[
+    {
+        "imex": 1,
+        "guid_1c": "be59a7da-b31a-4690-801d-f7dfd2bca110",
+        "webhook": "http://alkuka-msd.efko.ru/AlkMsdTrade/hs/UniRest/1/FederalCustomsService/ExportNotificationStatusRegistration",
+        "consignee_name": "Открытое акционерное общество \"Подберезский комбинат хлебопродуктов\"",
+        "consignee_postalcode": "173502",
+        "consignee_countrycode": "",
+        "consignee_countryname": "",
+        "consignee_region": "Новгородская обл",
+        "consignee_city": "",
+        "consignee_streethouse": " ",
+        "consignee_ogrn": "1025301389662",
+        "consignee_inn": "5310002208",
+        "consignee_kpp": "531001001",
+        "imexdate": "2025-07-31T23:50:45",
+        "is_export": 0,
+        "transportkind": 2,
+        "transportmark": "",
+        "activetransportnumber": "",
+        "transportregnumber": "",
+        "transportmode": 1,
+        "goods_informations": [
+            {
+                "goods_description": "Шрот подсолнечный, тостированный (гранулированный, ГОСТ 11246-96)",
+                "goods_quantity_im": 68100,
+                "measure_unit_qualifier_code_im": "166",
+                "measure_unit_qualifier_name_im": "кг",
+                "packages_quantity": 1,
+                "weight_quantity": 68100,
+                "net_weight_quantity": "",
+                "packaging_kind": "Насыпью твердые гранулированные частицы",
+                "packaging_code": "VR",
+                "note": "ТН МС0023660 30.07.2025"
+            }
+        ],
+        "requisite_name": [
+            {
+                "reg_num": "МС0023660",
+                "reg_date": "2025-07-30T23:50:45",
+                "order_num": "RC026742",
+                "order_date": "2025-07-01T16:39:34",
+                "copy": "",
+                "consignor_ogrn": "1206300052970",
+                "consignor_inn": "6320053130",
+                "consignor_kpp": "632001001",
+                "consignor_name": "Тольяттинский Комбинат Пищевых Продуктов ООО",
+                "consignor_country_code": "RU",
+                "consignor_country_name": "РОССИЯ",
+                "consignor_postal_code": "445043",
+                "consignor_region": "Самарская обл",
+                "consignor_city": "Тольятти г",
+                "consignor_street_house": "ОЭЗ ППТ тер 2-е ш, зд 3, стр 4, пом 20, оф 211",
+                "consignor_forwarder": 0,
+                "consignee_name": "Открытое акционерное общество \"Подберезский комбинат хлебопродуктов\"",
+                "consignee_ogrn": "1025301389662",
+                "consignee_inn": "5310002208",
+                "consignee_kpp": "531001001",
+                "consignee_country_code": " ",
+                "consignee_country_name": " ",
+                "consignee_postal_code": "173502",
+                "consignee_region": "Новгородская обл",
+                "consignee_city": "Подберезье д",
+                "consignee_street_house": " ",
+                "road_train": 1,
+                "delivery_flag": 0,
+                "delivery_place": "Российская Федерация, 173502, Новгородская обл, Новгородский р-н, Подберезье д",
+                "delivery_address_postal_code": "",
+                "delivery_address_country_code": "",
+                "delivery_address_country_name": "",
+                "delivery_address_region": "",
+                "delivery_address_city": "",
+                "delivery_address_street_house": "",
+                "good_informations": [
+                    {
+                        "goods_description": "Шрот подсолнечный, тостированный (гранулированный, ГОСТ 11246-96)",
+                        "packing_mark": "",
+                        "cargo_spaces": 1,
+                        "gross_weight_quantity": 91400,
+                        "net_weight_quantity": 68100,
+                        "goods_quantity": 68100,
+                        "measure_unit_qualifier_name": "кг",
+                        "measure_unit_qualifier_code": "166"
+                    }
+                ],
+                "transport_informations": [
+                    {
+                        "type_road_train": 1,
+                        "type_ownership": "",
+                        "registration_number": "95 776 365",
+                        "mark": "ВАГОН"
+                    },
+                    {
+                        "type_road_train": 2,
+                        "type_ownership": "",
+                        "registration_number": "ЭА933792",
+                        "mark": "жд квитанция"
+                    }
+                ]
+            }
+        ]
+    }
+]
