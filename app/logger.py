@@ -16,7 +16,7 @@ def setup_logger():
     )
     ch.setFormatter(formatter)
 
-    # Добавляем обработчик к логгеру
+    # Добавляем оasfsfбработчик к логгеру
     logger.addHandler(ch)
 
     return logger
