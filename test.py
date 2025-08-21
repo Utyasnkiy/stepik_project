@@ -1,2 +1,6 @@
-print('phone' in'headphones')
-print(len('18231203'))
+def main():
+    num = 1
+
+
+def second():
+    main.

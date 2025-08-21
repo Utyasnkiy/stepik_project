@@ -1,8 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Cookie, Response
+from uuid import UUID, uuid1
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, ValidationError
 import asyncio
 from app.database import sample_products
+from itsdangerous import URLSafeTimedSerializer, BadSignature
 
 from app.config import load_config
 from app.logger import logger
@@ -105,3 +107,53 @@ async def get_product_filter(keyword:str= '', category:str = None, limit:int=Non
         if keyword.lower() in el['name'].lower():
             result.append(el)
     return result[:limit]
+
+
+from uuid import uuid4
+
+# Секрет для подписи
+SECRET_KEY = "SUPER_SECRET_KEY"
+serializer = URLSafeTimedSerializer(SECRET_KEY)
+
+# Простая база пользователей
+users = {
+    "admin": {"password": "1234", "id": str(uuid4())}
+}
+
+
+from fastapi import HTTPException, Form
+
+# 📌 /login — проверка логина и установка cookie
+@app.post("/login")
+async def login(response: Response, username: str = Form(...), password: str = Form(...)):
+    user = users.get(username)
+    if not user or user["password"] != password:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+    
+    user_id = user["id"]
+    token = serializer.dumps(user_id)
+
+    response.set_cookie(
+        key="session_token",
+        value=token,
+        httponly=True,
+        max_age=3600  # 1 час
+    )
+    return {"message": "Logged in"}
+
+# 📌 /profile — проверка cookie и возврат данных
+@app.get("/profile")
+async def profile(session_token: str = Cookie(None)):
+    if not session_token:
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    try:
+        user_id = serializer.loads(session_token)
+        return {"message": "Welcome!", "user_id": user_id}
+    except BadSignature:
+        raise HTTPException(status_code=401, detail="Invalid or tampered token")
+
+# 📌 /logout — удаление cookie
+@app.post("/logout")
+async def logout(response: Response):
+    response.delete_cookie("session_token")
+    return {"message": "Logged out"}
