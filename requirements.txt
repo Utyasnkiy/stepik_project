@@ -1,1 +1,4 @@
 environs
+fastapi
+sqllite
+pydantic[email]
