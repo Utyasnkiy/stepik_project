@@ -10,10 +10,13 @@ from app.config import load_config
 from app.logger import logger
 # from app.models import User, FeedBack, NewUSER
 from app.models import Product
-
+from app.routers.headers import router as router_students
 config = load_config()
 
 app = FastAPI()
+
+app.include_router(router_students)
+
 
 if config.debug:
     app.debug = True
@@ -139,7 +142,7 @@ async def login(response: Response, username: str = Form(...), password: str = F
         httponly=True,
         max_age=3600  # 1 час
     )
-    return {"message": "Logged in"}
+    return {"message": "Logged in", "user token": token}
 
 # 📌 /profile — проверка cookie и возврат данных
 @app.get("/profile")
