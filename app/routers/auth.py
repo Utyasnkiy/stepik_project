@@ -4,7 +4,7 @@ from fastapi.security import *
 from app.models.user_model import *
 
 
-router = APIRouter(prefix="/auth")
+router = APIRouter(prefix="/auth", tags=["Authotification"])
 security = HTTPBasic()
 
 def get_user_from_db(username: str):
