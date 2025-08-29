@@ -9,12 +9,13 @@ from itsdangerous import URLSafeTimedSerializer, BadSignature
 from app.config import load_config
 from app.logger import logger
 # from app.models import User, FeedBack, NewUSER
-from app.models import Product
+from app.models.models import Product
 from app.routers.headers import router as router_students
+from app.routers.auth import router as route_auth
 config = load_config()
 
 app = FastAPI()
-
+app.include_router(route_auth)
 app.include_router(router_students)
 
 
